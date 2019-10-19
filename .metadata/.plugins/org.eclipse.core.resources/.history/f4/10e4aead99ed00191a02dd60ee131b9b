@@ -1,0 +1,69 @@
+package isro;
+
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JLabel;
+import javax.swing.JTextArea;
+import javax.swing.JButton;
+
+public class MissionDetails extends JFrame {
+
+	private JPanel contentPane;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					MissionDetails frame = new MissionDetails();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public MissionDetails() {
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 849, 591);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		JLabel lblMissiondetails = new JLabel("MissionDetails");
+		lblMissiondetails.setBounds(10, 10, 165, 20);
+		contentPane.add(lblMissiondetails);
+		
+		JTextArea textAreaDesc = new JTextArea();
+		textAreaDesc.setEditable(false);
+		textAreaDesc.setBounds(50, 66, 597, 180);
+		contentPane.add(textAreaDesc);
+		
+		JLabel lblNewLabelImg = new JLabel("New label");
+		lblNewLabelImg.setBounds(684, 72, 141, 164);
+		contentPane.add(lblNewLabelImg);
+		
+		JTextArea textAreaLongDesc = new JTextArea();
+		textAreaLongDesc.setBounds(52, 267, 595, 244);
+		contentPane.add(textAreaLongDesc);
+		
+		JLabel lblNewLabelImg2 = new JLabel("New label");
+		lblNewLabelImg2.setBounds(684, 273, 141, 144);
+		contentPane.add(lblNewLabelImg2);
+		
+		JButton btnExitMission = new JButton("Exit");
+		btnExitMission.setBounds(698, 490, 85, 21);
+		contentPane.add(btnExitMission);
+	}
+}

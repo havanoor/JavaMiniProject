@@ -1,0 +1,60 @@
+package isro;
+
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JTextPane;
+import javax.swing.JTextArea;
+
+public class Main {
+
+	private JFrame frame;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					Main window = new Main();
+					window.frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the application.
+	 */
+	public Main() {
+		initialize();
+	}
+
+	/**
+	 * Initialize the contents of the frame.
+	 */
+	private void initialize() {
+		frame = new JFrame();
+		frame.setBounds(100, 100, 450, 300);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.getContentPane().setLayout(null);
+		
+		JLabel lblFirst = new JLabel("first");
+		lblFirst.setBounds(132, 116, 46, 13);
+		frame.getContentPane().add(lblFirst);
+		
+		JTextPane textPane = new JTextPane();
+		textPane.setText("1\r\n2\r\n3\r\n4\r\n5");
+		textPane.setBounds(317, 133, -108, 103);
+		frame.getContentPane().add(textPane);
+		
+		JTextArea textArea = new JTextArea();
+		textArea.setText("1\r\n2\r\n3\r\n4\r\n5\r\n");
+		textArea.setBounds(231, 10, 84, 133);
+		frame.getContentPane().add(textArea);
+	}
+}

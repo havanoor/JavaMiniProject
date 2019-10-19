@@ -1,0 +1,100 @@
+package isro;
+
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JTextPane;
+import javax.swing.JTextArea;
+import javax.swing.JMenuBar;
+import javax.swing.JMenu;
+import javax.swing.JMenuItem;
+import javax.swing.JComboBox;
+import javax.swing.JTextField;
+
+public class Main {
+
+	private JFrame frame;
+	private JTextField textField;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					Main window = new Main();
+					window.frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the application.
+	 */
+	public Main() {
+		initialize();
+	}
+
+	/**
+	 * Initialize the contents of the frame.
+	 */
+	private void initialize() {
+		frame = new JFrame();
+		frame.setBounds(100, 100, 450, 300);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.getContentPane().setLayout(null);
+		
+		JLabel lblFirst = new JLabel("first");
+		lblFirst.setBounds(132, 57, 46, 72);
+		frame.getContentPane().add(lblFirst);
+		
+		JTextPane textPane = new JTextPane();
+		textPane.setText("1\r\n2\r\n3\r\n4\r\n5");
+		textPane.setBounds(317, 133, -108, 103);
+		frame.getContentPane().add(textPane);
+		
+		JTextArea textArea = new JTextArea();
+		textArea.setText("1\r\n2\r\n3\r\n4\r\n5\r\n");
+		textArea.setBounds(231, 10, 84, 133);
+		frame.getContentPane().add(textArea);
+		
+		JComboBox comboBox = new JComboBox();
+		comboBox.setEditable(true);
+		comboBox.setBounds(21, 122, 128, 21);
+		frame.getContentPane().add(comboBox);
+		
+		textField = new JTextField();
+		textField.setBounds(21, 123, 96, 19);
+		frame.getContentPane().add(textField);
+		textField.setColumns(10);
+		
+		JMenuBar menuBar = new JMenuBar();
+		frame.setJMenuBar(menuBar);
+		
+		JMenu mnFile = new JMenu("File");
+		menuBar.add(mnFile);
+		
+		JMenuItem mntmExit = new JMenuItem("Exit");
+		mnFile.add(mntmExit);
+		
+		JMenu mnBrowse = new JMenu("Browse");
+		menuBar.add(mnBrowse);
+		
+		JMenuItem mntmBrowseMissions = new JMenuItem("Browse Missions");
+		mnBrowse.add(mntmBrowseMissions);
+		
+		JMenu mnNewMenu = new JMenu("New menu");
+		menuBar.add(mnNewMenu);
+		
+		JMenu mnNewMenu_1 = new JMenu("Help");
+		menuBar.add(mnNewMenu_1);
+		
+		JMenuItem mntmAbout = new JMenuItem("About ");
+		mnNewMenu_1.add(mntmAbout);
+	}
+}

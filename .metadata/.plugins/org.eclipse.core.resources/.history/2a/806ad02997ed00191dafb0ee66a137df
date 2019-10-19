@@ -1,0 +1,14 @@
+package isro;
+
+import javax.swing.JPanel;
+
+public class MissionDetails extends JPanel {
+
+	/**
+	 * Create the panel.
+	 */
+	public MissionDetails() {
+
+	}
+
+}
