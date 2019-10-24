@@ -1,0 +1,63 @@
+package isro;
+
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+import java.awt.Image;
+
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JLabel;
+import java.awt.Font;
+import javax.swing.JTextArea;
+
+public class Launchers extends JFrame {
+
+	private JPanel contentPane;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					Launchers frame = new Launchers();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public Launchers() {
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 1009, 721);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		JLabel homeimg = new JLabel("New label");
+		homeimg.setBounds(242, 111, 500, 320);
+		contentPane.add(homeimg);
+		Image img5=new ImageIcon(this.getClass().getResource("/launcher_1.jpg")).getImage();
+		homeimg.setIcon(new ImageIcon(img5));
+		
+		JLabel lblLaunchers = new JLabel("Launchers");
+		lblLaunchers.setFont(new Font("Segoe UI Black", Font.BOLD, 15));
+		lblLaunchers.setBounds(376, 62, 108, 13);
+		contentPane.add(lblLaunchers);
+		
+		JTextArea txtrLaunchersOrLaunch = new JTextArea();
+		txtrLaunchersOrLaunch.setLineWrap(true);
+		txtrLaunchersOrLaunch.setText("Launchers or Launch Vehicles are used to carry spacecraft to space. India has two operational launchers: Polar Satellite Launch Vehicle (PSLV) and Geosynchronous Satellite Launch Vehicle (GSLV). GSLV with indigenous Cryogenic Upper Stage has enabled the launching up to 2 tonne class of communication satellites. The next variant of GSLV is GSLV Mk III, with indigenous high thrust cryogenic engine and stage, having the capability of launching 4 tonne class of communication satellites.");
+		txtrLaunchersOrLaunch.setBounds(40, 468, 927, 206);
+		contentPane.add(txtrLaunchersOrLaunch);
+	}
+}

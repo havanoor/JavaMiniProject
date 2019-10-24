@@ -1,0 +1,128 @@
+package isro;
+
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JLabel;
+import java.awt.Font;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
+
+import javax.swing.JTextArea;
+
+public class Spacecraft extends JFrame {
+
+	private JPanel contentPane;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					Spacecraft frame = new Spacecraft();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public Spacecraft() {
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 1133, 737);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		JLabel lblIndianSpacecraft = new JLabel("INDIAN SPACECRAFT");
+		lblIndianSpacecraft.setBounds(396, 54, 332, 41);
+		lblIndianSpacecraft.setFont(new Font("Segoe UI Black", Font.BOLD, 26));
+		contentPane.add(lblIndianSpacecraft);
+		
+		JLabel Commsatellite = new JLabel("Communication Satellite");
+		Commsatellite.setFont(new Font("Segoe UI Black", Font.BOLD, 12));
+		Commsatellite.setBounds(131, 183, 166, 33);
+		contentPane.add(Commsatellite);
+		
+		JLabel Earthobjsatellite = new JLabel("Earth Observation Satellite\r\n");
+		Earthobjsatellite.setFont(new Font("Segoe UI Black", Font.PLAIN, 12));
+		Earthobjsatellite.setBounds(465, 179, 193, 41);
+		contentPane.add(Earthobjsatellite);
+		
+		JLabel ScientificSpacecraft = new JLabel("ScientificSpacecraft");
+		ScientificSpacecraft.setFont(new Font("Segoe UI Black", Font.BOLD, 12));
+		ScientificSpacecraft.setBounds(916, 188, 124, 22);
+		contentPane.add(ScientificSpacecraft);
+		
+		JLabel Navsatellite = new JLabel("Navigation Satellite");
+		Navsatellite.setFont(new Font("Segoe UI Black", Font.BOLD, 12));
+		Navsatellite.setBounds(186, 375, 155, 33);
+		contentPane.add(Navsatellite);
+		
+		JLabel Experisatellite = new JLabel("Experimental Satellite");
+		Experisatellite.setFont(new Font("Segoe UI Black", Font.BOLD, 12));
+		Experisatellite.setBounds(496, 375, 145, 23);
+		contentPane.add(Experisatellite);
+		
+		JLabel SmallSatell = new JLabel("Small Satellite");
+		SmallSatell.setFont(new Font("Segoe UI Black", Font.BOLD, 12));
+		SmallSatell.setBounds(777, 375, 104, 23);
+		contentPane.add(SmallSatell);
+		
+		JLabel Studentsatellite = new JLabel("Student Satellite");
+		Studentsatellite.setFont(new Font("Segoe UI Black", Font.BOLD, 12));
+		Studentsatellite.setBounds(916, 376, 119, 22);
+		contentPane.add(Studentsatellite);
+		
+		JTextArea textArea = new JTextArea();
+		textArea.setBounds(131, 237, 5, 22);
+		contentPane.add(textArea);
+		
+		JTextArea textArea_1 = new JTextArea();
+		textArea_1.setBounds(186, 472, 5, 22);
+		contentPane.add(textArea_1);
+		
+		JTextArea textArea_2 = new JTextArea();
+		textArea_2.setBounds(510, 237, 5, 22);
+		contentPane.add(textArea_2);
+		
+		JTextArea textArea_3 = new JTextArea();
+		textArea_3.setBounds(947, 273, 5, 22);
+		contentPane.add(textArea_3);
+		
+		JTextArea textArea_4 = new JTextArea();
+		textArea_4.setBounds(157, 261, 5, 22);
+		contentPane.add(textArea_4);
+		
+		JTextArea textArea_5 = new JTextArea();
+		textArea_5.setBounds(510, 461, 5, 22);
+		contentPane.add(textArea_5);
+		
+		JTextArea textArea_6 = new JTextArea();
+		textArea_6.setBounds(804, 472, 5, 22);
+		contentPane.add(textArea_6);
+		
+		JTextArea textArea_7 = new JTextArea();
+		textArea_7.setBounds(980, 461, 5, 22);
+		contentPane.add(textArea_7);
+		
+		//Database
+		//Database
+		String query=String.format("select id,small_description,COALESCE(img1,'') as img1 from spacecraft where id='%d' ",k)  ;
+		System.out.println(query);
+		Connection c1=DatabaseConnect.mkconnection() ;
+		Statement st=c1.createStatement();
+		ResultSet rs=st.executeQuery(query);
+	}
+}

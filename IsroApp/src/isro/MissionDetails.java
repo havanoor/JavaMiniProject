@@ -19,6 +19,7 @@ import java.awt.event.AdjustmentListener;
 import java.awt.event.AdjustmentEvent;
 import javax.swing.JScrollPane;
 import java.awt.Font;
+import java.awt.Color;
 
 public class MissionDetails extends JFrame {
 
@@ -44,27 +45,36 @@ public class MissionDetails extends JFrame {
 	 * Create the frame.
 	 */
 	public MissionDetails(String vs) throws Exception {
+		setBackground(Color.BLACK);
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(200, 10, 993, 746);
+		setBounds(200, 10, 1399, 766);
 		contentPane = new JPanel();
+		contentPane.setBackground(Color.BLACK);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
 		JLabel lblMissiondetails = new JLabel("MissionDetails");
+		lblMissiondetails.setForeground(Color.WHITE);
 		lblMissiondetails.setFont(new Font("Tahoma", Font.BOLD, 15));
 		lblMissiondetails.setBounds(400, 10, 165, 20);
 		contentPane.add(lblMissiondetails);
 	
 		JTextArea textAreaDesc = new JTextArea();
+		textAreaDesc.setFont(new Font("Segoe UI Black", Font.PLAIN, 13));
+		textAreaDesc.setForeground(Color.WHITE);
+		textAreaDesc.setBackground(Color.BLACK);
 		textAreaDesc.setLineWrap(true);
 		textAreaDesc.setText("");
 		textAreaDesc.setEditable(false);
-		textAreaDesc.setBounds(52, 43, 915, 100);
+		textAreaDesc.setBounds(759, 38, 616, 131);
 		contentPane.add(textAreaDesc);
 
 		JTextArea textAreaLongDesc = new JTextArea();
+		textAreaLongDesc.setFont(new Font("Segoe UI Black", Font.PLAIN, 13));
+		textAreaLongDesc.setForeground(Color.WHITE);
+		textAreaLongDesc.setBackground(Color.BLACK);
 		textAreaLongDesc.setLineWrap(true);
 		textAreaLongDesc.setText("");
 		textAreaLongDesc.setEditable(false);
@@ -77,12 +87,13 @@ public class MissionDetails extends JFrame {
 	
 		
 		JLabel lblNewLabelImg = new JLabel("New label");
+		lblNewLabelImg.setBackground(Color.BLACK);
 		lblNewLabelImg.setBounds(52, 497, 200, 200);
 		contentPane.add(lblNewLabelImg);
 		
 		
 		JLabel lblNewLabelImg2 = new JLabel("New label");
-		lblNewLabelImg2.setBounds(367, 497, 200, 200);
+		lblNewLabelImg2.setBounds(373, 497, 200, 200);
 		contentPane.add(lblNewLabelImg2);
 		
 		JButton btnExitMission = new JButton("Exit");
@@ -92,28 +103,65 @@ public class MissionDetails extends JFrame {
 				
 			}
 		});
-		btnExitMission.setBounds(843, 645, 85, 21);
+		btnExitMission.setBounds(0, 2, 85, 21);
 		contentPane.add(btnExitMission);
 		
-			//Database
-				String query=String.format("select id,name,COALESCE(img1,''),COALESCE(img2,''),description,long_description from mission where name='%s' ",vs)  ;
-				System.out.println(query);
-				Connection c1=DatabaseConnect.mkconnection() ;
-				Statement st=c1.createStatement();
-				ResultSet rs=st.executeQuery(query);
+									
+						JLabel lblAboutTheMission = new JLabel("About the mission");
+						lblAboutTheMission.setForeground(Color.WHITE);
+						lblAboutTheMission.setFont(new Font("Segoe UI Black", Font.PLAIN, 12));
+						lblAboutTheMission.setBounds(759, 11, 133, 20);
+						contentPane.add(lblAboutTheMission);
 						
-				rs.next();
-				lblMissiondetails.setText(rs.getString(2));
-				textAreaDesc.setText(rs.getString(5));
-				textAreaLongDesc.setText(rs.getString("long_description"));
-	
+						JLabel lblSomethingsRelatedTo = new JLabel("Somethings related to the mission");
+						lblSomethingsRelatedTo.setForeground(Color.WHITE);
+						lblSomethingsRelatedTo.setFont(new Font("Segoe UI Black", Font.BOLD, 12));
+						lblSomethingsRelatedTo.setBounds(50, 170, 242, 20);
+						contentPane.add(lblSomethingsRelatedTo);
+						
+						JTextArea Specs = new JTextArea();
+						Specs.setFont(new Font("Segoe UI Black", Font.PLAIN, 13));
+						Specs.setForeground(Color.WHITE);
+						Specs.setBackground(Color.BLACK);
+						Specs.setEditable(false);
+						Specs.setBounds(930, 201, 388, 476);
+						contentPane.add(Specs);
+						
+						
+						JLabel lblSomeShortDetails = new JLabel("Some Short Details:");
+						lblSomeShortDetails.setForeground(Color.WHITE);
+						lblSomeShortDetails.setFont(new Font("Segoe UI Black", Font.BOLD, 12));
+						lblSomeShortDetails.setBounds(938, 161, 176, 27);
+						contentPane.add(lblSomeShortDetails);
+						
+						JLabel img3 = new JLabel("img3");
+						img3.setBackground(Color.YELLOW);
+						img3.setForeground(Color.WHITE);
+						img3.setBounds(650, 497, 200, 200);
+						contentPane.add(img3);
+
+						//Database
+						//Database
+						String query=String.format("select id,name,COALESCE(img1,'') as img1,COALESCE(img2,'') as img2,COALESCE(img3,'') as img3,specs,small_description,long_description from mission2 where name='%s' ",vs)  ;
+						System.out.println(query);
+						Connection c1=DatabaseConnect.mkconnection() ;
+						Statement st=c1.createStatement();
+						ResultSet rs=st.executeQuery(query);
+								
+						rs.next();
+						lblMissiondetails.setText(rs.getString("name"));
+						textAreaDesc.setText(rs.getString("small_description"));
+						textAreaLongDesc.setText(rs.getString("long_description"));
+						Specs.setText(rs.getString("specs"));
+						System.out.println(rs.getString("img2"));
 						Image img1=new ImageIcon(this.getClass().getResource(rs.getString(3))).getImage();
+						//Image img1=new ImageIcon(this.getClass().getResource("/chandra11")).getImage();
+						
 						lblNewLabelImg.setIcon(new ImageIcon(img1));
 
 						Image img2=new ImageIcon(this.getClass().getResource(rs.getString(4))).getImage();
+						//Image img2=new ImageIcon(this.getClass().getResource("/chandra12")).getImage();
 						lblNewLabelImg2.setIcon(new ImageIcon(img2));
 
-						//Database
-		
 	}
 }

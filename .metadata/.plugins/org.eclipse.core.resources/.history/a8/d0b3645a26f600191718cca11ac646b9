@@ -1,0 +1,63 @@
+package isro;
+
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+import java.awt.Image;
+
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JLabel;
+import java.awt.Font;
+import javax.swing.JTextArea;
+
+public class Launchers extends JFrame {
+
+	private JPanel contentPane;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					Launchers frame = new Launchers();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public Launchers() {
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 1009, 721);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		JLabel homeimg = new JLabel("New label");
+		homeimg.setBounds(242, 111, 500, 320);
+		contentPane.add(homeimg);
+		Image img5=new ImageIcon(this.getClass().getResource("/launcher_1.jpg")).getImage();
+		homeimg.setIcon(new ImageIcon(img5));
+		
+		JLabel lblLaunchers = new JLabel("Launchers");
+		lblLaunchers.setFont(new Font("Segoe UI Black", Font.BOLD, 15));
+		lblLaunchers.setBounds(376, 62, 108, 13);
+		contentPane.add(lblLaunchers);
+		
+		JTextArea txtrLaunchersOrLaunch = new JTextArea();
+		txtrLaunchersOrLaunch.setLineWrap(true);
+		txtrLaunchersOrLaunch.setText("Launchers or Launch Vehicles are used to carry spacecraft to space. India has two operational launchers: Polar Satellite Launch Vehicle (PSLV) and Geosynchronous Satellite Launch Vehicle (GSLV). GSLV with indigenous Cryogenic Upper Stage has enabled the launching up to 2 tonne class of communication satellites. The next variant of GSLV is GSLV Mk III, with indigenous high thrust cryogenic engine and stage, having the capability of launching 4 tonne class of communication satellites.\r\n\r\nIn order to achieve high accuracy in placing satellites into their orbits, a combination of accuracy, efficiency, power and immaculate planning are required. ISRO's Launch Vehicle Programme spans numerous centres and employs over 5,000 people. Vikram Sarabhai Space Centre, located in Thiruvananthapuram, is responsible for the design and development of launch vehicles. Liquid Propulsion Systems Centre and ISRO Propulsion Complex, located at Valiamala and Mahendragiri respectively, develop the liquid and cryogenic stages for these launch vehicles. Satish Dhawan Space Centre, SHAR, is the space port of India and is responsible for integration of launchers. It houses two operational launch pads from where all GSLV and PSLV flights take place.\r\n");
+		txtrLaunchersOrLaunch.setBounds(10, 443, 975, 241);
+		contentPane.add(txtrLaunchersOrLaunch);
+	}
+}

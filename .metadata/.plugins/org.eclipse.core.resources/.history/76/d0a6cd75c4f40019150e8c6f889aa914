@@ -1,0 +1,64 @@
+package isro;
+
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JLabel;
+import java.awt.Font;
+
+public class Spacecraft extends JFrame {
+
+	private JPanel contentPane;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					Spacecraft frame = new Spacecraft();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public Spacecraft() {
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 1133, 737);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		JLabel lblIndianSpacecraft = new JLabel("INDIAN SPACECRAFT");
+		lblIndianSpacecraft.setFont(new Font("Segoe UI Black", Font.BOLD, 26));
+		lblIndianSpacecraft.setBounds(396, 54, 332, 41);
+		contentPane.add(lblIndianSpacecraft);
+		
+		JLabel Commsatellite = new JLabel("New label");
+		Commsatellite.setBounds(146, 194, 46, 13);
+		contentPane.add(Commsatellite);
+		
+		JLabel Earthobjsatellite = new JLabel("New label");
+		Earthobjsatellite.setBounds(499, 194, 46, 13);
+		contentPane.add(Earthobjsatellite);
+		
+		JLabel lblNewLabel = new JLabel("New label");
+		lblNewLabel.setBounds(929, 214, 46, 13);
+		contentPane.add(lblNewLabel);
+		
+		JLabel lblNewLabel_1 = new JLabel("New label");
+		lblNewLabel_1.setBounds(186, 395, 46, 13);
+		contentPane.add(lblNewLabel_1);
+	}
+}

@@ -1,0 +1,163 @@
+package isro;
+
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+import java.awt.Image;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JLabel;
+import javax.swing.JTextArea;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import java.sql.*;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import javax.swing.JScrollBar;
+import java.awt.event.AdjustmentListener;
+import java.awt.event.AdjustmentEvent;
+import javax.swing.JScrollPane;
+import java.awt.Font;
+import java.awt.Color;
+
+public class MissionDetails extends JFrame {
+
+	private JPanel contentPane;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					MissionDetails frame = new MissionDetails("");
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public MissionDetails(String vs) throws Exception {
+		setBackground(Color.BLACK);
+		
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(200, 10, 1399, 766);
+		contentPane = new JPanel();
+		contentPane.setBackground(Color.BLACK);
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		JLabel lblMissiondetails = new JLabel("MissionDetails");
+		lblMissiondetails.setForeground(Color.WHITE);
+		lblMissiondetails.setFont(new Font("Tahoma", Font.BOLD, 15));
+		lblMissiondetails.setBounds(400, 10, 165, 20);
+		contentPane.add(lblMissiondetails);
+	
+		JTextArea textAreaDesc = new JTextArea();
+		textAreaDesc.setForeground(Color.WHITE);
+		textAreaDesc.setBackground(Color.BLACK);
+		textAreaDesc.setLineWrap(true);
+		textAreaDesc.setText("");
+		textAreaDesc.setEditable(false);
+		textAreaDesc.setBounds(759, 51, 616, 100);
+		contentPane.add(textAreaDesc);
+
+		JTextArea textAreaLongDesc = new JTextArea();
+		textAreaLongDesc.setForeground(Color.WHITE);
+		textAreaLongDesc.setBackground(Color.BLACK);
+		textAreaLongDesc.setLineWrap(true);
+		textAreaLongDesc.setText("");
+		textAreaLongDesc.setEditable(false);
+		textAreaLongDesc.setBounds(55, 195, 833, 272);
+		contentPane.add(textAreaLongDesc);
+		
+		JScrollPane scrollPane = new JScrollPane(textAreaLongDesc);
+		scrollPane.setBounds(50, 200, 827, 277);
+		contentPane.add(scrollPane);
+	
+		
+		JLabel lblNewLabelImg = new JLabel("New label");
+		lblNewLabelImg.setBackground(Color.BLACK);
+		lblNewLabelImg.setBounds(52, 497, 200, 200);
+		contentPane.add(lblNewLabelImg);
+		
+		
+		JLabel lblNewLabelImg2 = new JLabel("New label");
+		lblNewLabelImg2.setBounds(373, 497, 200, 200);
+		contentPane.add(lblNewLabelImg2);
+		
+		JButton btnExitMission = new JButton("Exit");
+		btnExitMission.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				
+			}
+		});
+		btnExitMission.setBounds(0, 2, 85, 21);
+		contentPane.add(btnExitMission);
+		
+			//Database
+				String query=String.format("select id,name,COALESCE(img1,''),COALESCE(img2,''),COALESCE(img3,''),specs,small_description,long_description from mission2 where name='%s' ",vs)  ;
+				System.out.println(query);
+				Connection c1=DatabaseConnect.mkconnection() ;
+				Statement st=c1.createStatement();
+				ResultSet rs=st.executeQuery(query);
+						
+				rs.next();
+				lblMissiondetails.setText(rs.getString("name"));
+				textAreaDesc.setText(rs.getString("small_description"));
+				textAreaLongDesc.setText(rs.getString("long_description"));
+	
+						//Image img1=new ImageIcon(this.getClass().getResource(rs.getString("img1"))).getImage();
+						Image img1=new ImageIcon(this.getClass().getResource("/Chandrayaan22")).getImage();
+						lblNewLabelImg.setIcon(new ImageIcon(img1));
+
+						Image img2=new ImageIcon(this.getClass().getResource(rs.getString("img2"))).getImage();
+						Image img2=new ImageIcon(this.getClass().getResource("/Chandrayaan21")).getImage();
+						lblNewLabelImg2.setIcon(new ImageIcon(img2));
+						
+						JLabel lblAboutTheMission = new JLabel("About the mission");
+						lblAboutTheMission.setForeground(Color.WHITE);
+						lblAboutTheMission.setFont(new Font("Segoe UI Black", Font.PLAIN, 12));
+						lblAboutTheMission.setBounds(760, 21, 133, 20);
+						contentPane.add(lblAboutTheMission);
+						
+						JLabel lblSomethingsRelatedTo = new JLabel("Somethings related to the mission");
+						lblSomethingsRelatedTo.setForeground(Color.WHITE);
+						lblSomethingsRelatedTo.setFont(new Font("Segoe UI Black", Font.BOLD, 12));
+						lblSomethingsRelatedTo.setBounds(50, 170, 242, 20);
+						contentPane.add(lblSomethingsRelatedTo);
+						
+						JTextArea Specs = new JTextArea();
+						Specs.setForeground(Color.WHITE);
+						Specs.setBackground(Color.BLACK);
+						Specs.setEditable(false);
+						Specs.setBounds(930, 201, 388, 476);
+						contentPane.add(Specs);
+						
+						Specs.setText(rs.getString("specs"));
+						
+						JLabel lblSomeShortDetails = new JLabel("Some Short Details:");
+						lblSomeShortDetails.setForeground(Color.WHITE);
+						lblSomeShortDetails.setFont(new Font("Segoe UI Black", Font.BOLD, 12));
+						lblSomeShortDetails.setBounds(938, 161, 176, 27);
+						contentPane.add(lblSomeShortDetails);
+						
+						JLabel img3 = new JLabel("img3");
+						img3.setBackground(Color.YELLOW);
+						img3.setForeground(Color.WHITE);
+						img3.setBounds(650, 497, 200, 200);
+						contentPane.add(img3);
+
+						//Database
+		
+	}
+}

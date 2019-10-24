@@ -1,0 +1,140 @@
+package isro;
+
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JLabel;
+import java.awt.Font;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
+
+import javax.swing.JTextArea;
+
+public class Spacecraft extends JFrame {
+
+	private JPanel contentPane;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					Spacecraft frame = new Spacecraft();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public Spacecraft() {
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 1209, 754);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		JLabel lblIndianSpacecraft = new JLabel("INDIAN SPACECRAFT");
+		lblIndianSpacecraft.setBounds(396, 54, 332, 41);
+		lblIndianSpacecraft.setFont(new Font("Segoe UI Black", Font.BOLD, 26));
+		contentPane.add(lblIndianSpacecraft);
+		
+		JLabel Commsatellite = new JLabel("Communication Satellite");
+		Commsatellite.setFont(new Font("Segoe UI Black", Font.BOLD, 12));
+		Commsatellite.setBounds(73, 183, 166, 33);
+		contentPane.add(Commsatellite);
+		
+		JLabel Earthobjsatellite = new JLabel("Earth Observation Satellite\r\n");
+		Earthobjsatellite.setFont(new Font("Segoe UI Black", Font.PLAIN, 12));
+		Earthobjsatellite.setBounds(435, 179, 193, 41);
+		contentPane.add(Earthobjsatellite);
+		
+		JLabel ScientificSpacecraft = new JLabel("ScientificSpacecraft");
+		ScientificSpacecraft.setFont(new Font("Segoe UI Black", Font.BOLD, 12));
+		ScientificSpacecraft.setBounds(830, 188, 124, 22);
+		contentPane.add(ScientificSpacecraft);
+		
+		JLabel Navsatellite = new JLabel("Navigation Satellite");
+		Navsatellite.setFont(new Font("Segoe UI Black", Font.BOLD, 12));
+		Navsatellite.setBounds(56, 381, 155, 33);
+		contentPane.add(Navsatellite);
+		
+		JLabel Experisatellite = new JLabel("Experimental Satellite");
+		Experisatellite.setFont(new Font("Segoe UI Black", Font.BOLD, 12));
+		Experisatellite.setBounds(435, 386, 145, 23);
+		contentPane.add(Experisatellite);
+		
+		JLabel SmallSatell = new JLabel("Small Satellite");
+		SmallSatell.setFont(new Font("Segoe UI Black", Font.BOLD, 12));
+		SmallSatell.setBounds(745, 386, 104, 23);
+		contentPane.add(SmallSatell);
+		
+		JLabel Studentsatellite = new JLabel("Student Satellite");
+		Studentsatellite.setFont(new Font("Segoe UI Black", Font.BOLD, 12));
+		Studentsatellite.setBounds(921, 376, 119, 22);
+		contentPane.add(Studentsatellite);
+		
+		JTextArea txtrSupportsTelecommunicationTelevision_1 = new JTextArea();
+		txtrSupportsTelecommunicationTelevision_1.setEditable(false);
+		txtrSupportsTelecommunicationTelevision_1.setLineWrap(true);
+		txtrSupportsTelecommunicationTelevision_1.setText("Supports telecommunication, television broadcasting, satellite news gathering, societal applications, weather forecasting, disaster warning and Search and Rescue operation services.");
+		txtrSupportsTelecommunicationTelevision_1.setBounds(73, 226, 260, 139);
+		contentPane.add(txtrSupportsTelecommunicationTelevision_1);
+		
+		JTextArea txtrSatellitesForNavigation = new JTextArea();
+		txtrSatellitesForNavigation.setText("Satellites for navigation services to meet the emerging demands of the Civil Aviation requirements and to meet the user requirements of the positioning, navigation and timing based on the independent satellite navigation system. ");
+		txtrSatellitesForNavigation.setLineWrap(true);
+		txtrSatellitesForNavigation.setBounds(56, 424, 332, 145);
+		contentPane.add(txtrSatellitesForNavigation);
+		
+		JTextArea txtrSupportsTelecommunicationTelevision = new JTextArea();
+		txtrSupportsTelecommunicationTelevision.setLineWrap(true);
+		txtrSupportsTelecommunicationTelevision.setEditable(false);
+		txtrSupportsTelecommunicationTelevision.setText("The largest civilian remote sensing satellite constellation in the world - thematic series of satellites supporting multitude of applications in the areas of land and water resources; cartography; and ocean & atmosphere.");
+		txtrSupportsTelecommunicationTelevision.setBounds(435, 230, 332, 135);
+		contentPane.add(txtrSupportsTelecommunicationTelevision);
+		
+		JTextArea txtrSpacecraftForResearch = new JTextArea();
+		txtrSpacecraftForResearch.setLineWrap(true);
+		txtrSpacecraftForResearch.setText("Spacecraft for research in areas like astronomy, astrophysics, planetary and earth sciences, atmospheric sciences and theoretical physics. ");
+		txtrSpacecraftForResearch.setBounds(830, 226, 289, 102);
+		contentPane.add(txtrSpacecraftForResearch);
+		
+		JTextArea txtrAHostOf = new JTextArea();
+		txtrAHostOf.setText("A host of small satellites mainly for the experimental purposes. These experiments include Remote Sensing, Atmospheric Studies, Payload Development, Orbit Controls, recovery technology etc..");
+		txtrAHostOf.setLineWrap(true);
+		txtrAHostOf.setBounds(439, 424, 263, 163);
+		contentPane.add(txtrAHostOf);
+		
+		JTextArea txtrSubKg = new JTextArea();
+		txtrSubKg.setLineWrap(true);
+		txtrSubKg.setText("Sub 500 kg class satellites - a platform for stand-alone payloads for earth imaging and science missions within a quick turn around time. ");
+		txtrSubKg.setBounds(745, 424, 155, 163);
+		contentPane.add(txtrSubKg);
+		
+		JTextArea txtrIsrosStudentSatellite = new JTextArea();
+		txtrIsrosStudentSatellite.setText("ISRO's Student Satellite programme is envisaged to encourage various Universities and Institutions for the development of Nano/Pico Satellites.\r\n");
+		txtrIsrosStudentSatellite.setLineWrap(true);
+		txtrIsrosStudentSatellite.setBounds(921, 408, 198, 145);
+		contentPane.add(txtrIsrosStudentSatellite);
+		
+		//Database
+		//Database
+		String query=String.format("select id,small_description,COALESCE(img1,'') as img1 from spacecraft where id='%d' ",k)  ;
+		System.out.println(query);
+		Connection c1=DatabaseConnect.mkconnection() ;
+		Statement st=c1.createStatement();
+		ResultSet rs=st.executeQuery(query);
+	}
+}

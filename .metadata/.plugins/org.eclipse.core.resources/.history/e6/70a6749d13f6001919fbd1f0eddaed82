@@ -1,0 +1,121 @@
+package isro;
+
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JLabel;
+import java.awt.Font;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
+
+import javax.swing.JTextArea;
+
+public class Spacecraft extends JFrame {
+
+	private JPanel contentPane;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					Spacecraft frame = new Spacecraft();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public Spacecraft() {
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 1133, 737);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		JLabel lblIndianSpacecraft = new JLabel("INDIAN SPACECRAFT");
+		lblIndianSpacecraft.setBounds(396, 54, 332, 41);
+		lblIndianSpacecraft.setFont(new Font("Segoe UI Black", Font.BOLD, 26));
+		contentPane.add(lblIndianSpacecraft);
+		
+		JLabel Commsatellite = new JLabel("New label");
+		Commsatellite.setBounds(146, 194, 46, 13);
+		contentPane.add(Commsatellite);
+		
+		JLabel Earthobjsatellite = new JLabel("New label");
+		Earthobjsatellite.setBounds(499, 194, 46, 13);
+		contentPane.add(Earthobjsatellite);
+		
+		JLabel lblNewLabel = new JLabel("New label");
+		lblNewLabel.setBounds(926, 194, 46, 13);
+		contentPane.add(lblNewLabel);
+		
+		JLabel Navsatellite = new JLabel("New label");
+		Navsatellite.setBounds(186, 395, 46, 13);
+		contentPane.add(Navsatellite);
+		
+		JLabel Experisatellite = new JLabel("New label");
+		Experisatellite.setBounds(499, 395, 46, 13);
+		contentPane.add(Experisatellite);
+		
+		JLabel SmallSatell = new JLabel("New label");
+		SmallSatell.setBounds(788, 395, 46, 13);
+		contentPane.add(SmallSatell);
+		
+		JLabel Studentsatellite = new JLabel("New label");
+		Studentsatellite.setBounds(965, 395, 46, 13);
+		contentPane.add(Studentsatellite);
+		
+		JTextArea textArea = new JTextArea();
+		textArea.setBounds(131, 237, 5, 22);
+		contentPane.add(textArea);
+		
+		JTextArea textArea_1 = new JTextArea();
+		textArea_1.setBounds(186, 472, 5, 22);
+		contentPane.add(textArea_1);
+		
+		JTextArea textArea_2 = new JTextArea();
+		textArea_2.setBounds(510, 237, 5, 22);
+		contentPane.add(textArea_2);
+		
+		JTextArea textArea_3 = new JTextArea();
+		textArea_3.setBounds(947, 273, 5, 22);
+		contentPane.add(textArea_3);
+		
+		JTextArea textArea_4 = new JTextArea();
+		textArea_4.setBounds(157, 261, 5, 22);
+		contentPane.add(textArea_4);
+		
+		JTextArea textArea_5 = new JTextArea();
+		textArea_5.setBounds(510, 461, 5, 22);
+		contentPane.add(textArea_5);
+		
+		JTextArea textArea_6 = new JTextArea();
+		textArea_6.setBounds(804, 472, 5, 22);
+		contentPane.add(textArea_6);
+		
+		JTextArea textArea_7 = new JTextArea();
+		textArea_7.setBounds(980, 461, 5, 22);
+		contentPane.add(textArea_7);
+		
+		//Database
+		//Database
+		String query=String.format("select id,small_description,COALESCE(img1,'') as img1 from spacecraft where id='%d' ",k)  ;
+		System.out.println(query);
+		Connection c1=DatabaseConnect.mkconnection() ;
+		Statement st=c1.createStatement();
+		ResultSet rs=st.executeQuery(query);
+	}
+}
