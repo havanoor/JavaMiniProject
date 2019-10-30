@@ -177,12 +177,6 @@ public class Main {
 		menuBar.add(mnNewMenu_1);
 		
 		JMenuItem mntmAbout = new JMenuItem("About ");
-		mntmAbout.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				About ob1= new About();
-				ob1.setVisible(true);
-			}
-		});
 		mnNewMenu_1.add(mntmAbout);
 	}
 }

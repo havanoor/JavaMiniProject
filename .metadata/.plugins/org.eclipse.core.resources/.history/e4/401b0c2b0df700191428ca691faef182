@@ -50,7 +50,6 @@ public class About extends JFrame {
 		contentPane.add(lblAbout);
 		
 		JTextArea txtrThisProjectIs = new JTextArea();
-		txtrThisProjectIs.setEditable(false);
 		txtrThisProjectIs.setBackground(Color.BLACK);
 		txtrThisProjectIs.setForeground(Color.WHITE);
 		txtrThisProjectIs.setBounds(20, 109, 1175, 127);
@@ -75,7 +74,6 @@ public class About extends JFrame {
 		contentPane.add(lblAboutIsro);
 		
 		JTextArea txtrIndiaDecidedTo = new JTextArea();
-		txtrIndiaDecidedTo.setEditable(false);
 		txtrIndiaDecidedTo.setLineWrap(true);
 		txtrIndiaDecidedTo.setText("India decided to go to space when Indian National Committee for Space Research (INCOSPAR) was set up by the Government of India in 1962. With the visionary Dr Vikram Sarabhai at its helm, INCOSPAR set up the Thumba Equatorial Rocket Launching Station (TERLS) in Thiruvananthapuram for upper atmospheric research.\r\n\r\nIndian Space Research Organisation, formed in 1969, superseded the erstwhile INCOSPAR. Vikram Sarabhai, having identified the role and importance of space technology in a Nation's development, provided ISRO the necessary direction to function as an agent of development. ISRO then embarked on its mission to provide the Nation space based services and to develop the technologies to achieve the same independently.\r\n\r\n");
 		txtrIndiaDecidedTo.setFont(new Font("Segoe UI Black", Font.BOLD, 18));

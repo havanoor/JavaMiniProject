@@ -134,11 +134,11 @@ public class MissionDetails extends JFrame {
 						lblSomeShortDetails.setBounds(938, 161, 176, 27);
 						contentPane.add(lblSomeShortDetails);
 						
-						JLabel img331 = new JLabel("img3");
-						img331.setBackground(Color.YELLOW);
-						img331.setForeground(Color.WHITE);
-						img331.setBounds(650, 497, 200, 200);
-						contentPane.add(img331);
+						JLabel img3 = new JLabel("img3");
+						img3.setBackground(Color.YELLOW);
+						img3.setForeground(Color.WHITE);
+						img3.setBounds(650, 497, 200, 200);
+						contentPane.add(img3);
 
 						//Database
 						//Database
@@ -162,11 +162,6 @@ public class MissionDetails extends JFrame {
 						Image img2=new ImageIcon(this.getClass().getResource(rs.getString(4))).getImage();
 						//Image img2=new ImageIcon(this.getClass().getResource("/chandra12")).getImage();
 						lblNewLabelImg2.setIcon(new ImageIcon(img2));
-						
-						Image ob=new ImageIcon(this.getClass().getResource(rs.getString(5))).getImage();
-						img331.setIcon(new ImageIcon(ob));
-						
-						
 
 	}
 }
